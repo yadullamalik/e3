@@ -35,7 +35,7 @@ export const Home = () => {
       />
 
       <Main className="mainContainer">
-        {books.data.map((e) => {
+        {/* {books.data.map((e) => {
           return (
             <div key={e.id}>
               <image src={e.book} />
@@ -49,7 +49,7 @@ export const Home = () => {
               />
             </div>
           );
-        })}
+        })} */}
       </Main>
     </div>
   );

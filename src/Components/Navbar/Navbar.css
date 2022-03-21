@@ -1,0 +1,6 @@
+.navbar {
+  display: flex;
+  gap: 100px;
+  margin: 20px;
+  margin-left: 600px;
+}
