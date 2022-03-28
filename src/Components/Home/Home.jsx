@@ -1,20 +1,20 @@
 import { BookCard } from "../BookCard/BookCard";
 import styled from "styled-components";
-import { SortAndFilterButtons } from "../SortAndFilterButtons/SortAndFilterButtons";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export const Home = () => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    getData();
+    getbooks();
   }, []);
-  const getData = () => {
+  const getbooks = () => {
     axios
       .get("http://localhost:8080/books")
       .then((res) => {
-        setBooks(res);
+        setBooks(res.data);
         console.log("books:", books);
       })
       .catch((e) => {
@@ -28,28 +28,59 @@ export const Home = () => {
   return (
     <div className="homeContainer">
       <h2 style={{ textAlign: "center" }}>Home</h2>
-      <SortAndFilterButtons
-        handleSort={
-          "give handleSort function to this component, that sorts books"
-        }
-      />
+      <div className="sortButtons">
+        <button
+          onClick={() => {
+            let arr = books.sort((a, b) => a.price - b.price);
+            setBooks([...arr]);
+          }}
+          className="sortByPriceAsc"
+        >
+          sortByPriceAsc
+        </button>
+        <button
+          onClick={() => {
+            let arr = books.sort((a, b) => b.price - a.price);
+            setBooks([...arr]);
+          }}
+          className="sortByPriceDsc"
+        >
+          sortByPriceDsc
+        </button>
+        <button
+          onClick={() => {
+            let arr = books.sort((a, b) => a.id - b.id);
+            setBooks([...arr]);
+          }}
+          className="sortByTitleAsc"
+        >
+          sortByTitleAsc
+        </button>
+        <button
+          onClick={() => {
+            let arr = books.sort((a, b) => b.id - a.id);
+            setBooks([...arr]);
+          }}
+          className="sortByTitleDsc"
+        >
+          sortByTitleDsc
+        </button>
+      </div>
 
       <Main className="mainContainer">
-        {/* {books.data.map((e) => {
+        {books.map((e) => {
           return (
-            <div key={e.id}>
-              <image src={e.book} />
-              {e.title}
-              {e.price}
-              <BookCard
-                id={e.id}
-                imageUrl={e.book}
-                title={e.title}
-                price={e.price}
-              />
-            </div>
+            <Link key={e.id} to={`/bookdetailspage/${e.id}`}>
+              <div className="bookCard">
+                <div>
+                  <img src={`${e.image}`} />
+                  <h3 className="title">{e.title}</h3>
+                  <h4 className="price">{e.price}</h4>
+                </div>
+              </div>
+            </Link>
           );
-        })} */}
+        })}
       </Main>
     </div>
   );

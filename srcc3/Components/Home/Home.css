@@ -1,0 +1,9 @@
+.sortButtons{
+    display: flex;
+    justify-content: space-evenly;
+}
+.books{
+  display: grid;
+  border: 1px solid black;
+  width: 500px;
+}

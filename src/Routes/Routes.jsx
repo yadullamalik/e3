@@ -12,6 +12,7 @@ export const AllRoutes = () => {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/section/:section" element={<Section />} />
+        {/* <Route exact path="/mystery" element={<Mystery/>} /> */}
         <Route
           exact
           path="/bookdetailspage/:id"
