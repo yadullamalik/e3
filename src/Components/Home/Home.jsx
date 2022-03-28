@@ -31,7 +31,7 @@ export const Home = () => {
       <div className="sortButtons">
         <button
           onClick={() => {
-            let arr = books.sort((a, b) => a.Price - b.Price);
+            let arr = books.sort((a, b) => a.price - b.price);
             setBooks([...arr]);
           }}
           className="sortByPriceAsc"
@@ -40,7 +40,7 @@ export const Home = () => {
         </button>
         <button
           onClick={() => {
-            let arr = books.sort((a, b) => b.Price - a.Price);
+            let arr = books.sort((a, b) => b.price - a.price);
             setBooks([...arr]);
           }}
           className="sortByPriceDsc"
@@ -73,9 +73,9 @@ export const Home = () => {
             <Link key={e.id} to={`/bookdetailspage/${e.id}`}>
               <div className="bookCard">
                 <div>
-                  <img src={e.book} />
+                  <img src={e.image} />
                   <h3 className="title">{e.title}</h3>
-                  <h4 className="price">{e.Price}</h4>
+                  <h4 className="price">{e.price}</h4>
                 </div>
               </div>
             </Link>

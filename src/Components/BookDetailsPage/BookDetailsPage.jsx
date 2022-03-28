@@ -21,13 +21,16 @@ export const BookDetailsPage = () => {
         return (
           <div className="bookContainer" key={e.id}>
             <h2 className="title">{e.title}</h2>
-            <img className="image" src={e.book} alt="#" />
-            <div className="author">{e.Author}</div>
-            <div className="description">{e.Description}</div>
-            <div className="price">{e.Price}</div>
+            <img className="image" src={e.image} alt="#" />
+            <div className="author">{e.author}</div>
+            <div className="description">{e.description}</div>
+            <div className="price">{e.price}</div>
             <div className="section">{e.id}</div>
-            <div className="isbnNumber">{e.ISBN}</div>
-            <ul className="reviews">{e.reviews}</ul>
+            <div className="isbnNumber">{e.isbnNumber}</div>
+            <ul className="reviews">
+              <li>{e.reviews}</li>
+              <li>{e.reviews}</li>
+            </ul>
           </div>
         );
       })}
